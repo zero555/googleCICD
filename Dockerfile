@@ -12,4 +12,4 @@ FROM tomcat:9.0-jre8-alpine
 
 RUN ["rm", "-fr", "/usr/local/tomcat/webapps"]
 COPY --from=maven_builder /app/target/CICD.war /usr/local/tomcat/webapps/CICD.war
-CMD ["catalina.sh", "run"] 
+CMD ["catalina.sh", "run"]
