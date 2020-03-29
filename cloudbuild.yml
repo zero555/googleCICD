@@ -1,0 +1,10 @@
+steps:
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['test']
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['install DskipTests=true']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'eu.gcr.io/cicd-272408/cicd:test', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push','eu.gcr.io/cicd-272408/cicd:test']
+images: ['eu.gcr.io/cicd-272408/cicd:test']
