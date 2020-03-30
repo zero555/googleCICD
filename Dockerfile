@@ -3,7 +3,6 @@ WORKDIR /app
 ADD pom.xml .
 
 RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "verify", "clean", "--fail-never"]
-
 ADD . $HOME
 RUN ["mvn","clean","install"]
 
