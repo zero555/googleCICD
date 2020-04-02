@@ -1,6 +1,15 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'eu.gcr.io/cicd-272715/cicd:test', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push','eu.gcr.io/cicd-272715/cicd:test']
-images: ['eu.gcr.io/cicd-272715/cicd:test']
+  - id: 'Build fat jar'
+    name: 'gcr.io/cloud-builders/mvn'
+    args: ['package']
+  - id: "Prepare staging directory"
+    name: 'ubuntu'
+    args: ['mkdir', 'deploy-build']
+  - name: 'ubuntu'
+    args: ['cp', 'src/main/webapp/WEB-INF/appengine-web.xml', 'deploy-build/']
+  - name: 'ubuntu'
+    args: ['cp', 'target/cicd.jar', 'deploy-build/']
+  - id: "Deploy to AppEngine"
+    name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', 'deploy-build/']
+timeout: '1600s'
