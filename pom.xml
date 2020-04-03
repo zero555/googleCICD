@@ -24,10 +24,6 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.3</version>
-                <configuration>
-                    <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
-                    <warName>googleCICD</warName>
-                </configuration>
             </plugin>
         </plugins>
     </build>
