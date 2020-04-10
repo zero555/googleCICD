@@ -7,7 +7,7 @@
     <groupId>googleCICD</groupId>
     <artifactId>googleCICD</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <properties>
         <!-- [START_EXCLUDE silent] -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,10 +26,10 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.2</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
                 <configuration>
-                    <finalName>cicd</finalName>
+                    <warName>googleCICD</warName>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
