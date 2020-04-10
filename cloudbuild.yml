@@ -1,6 +1,8 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'eu.gcr.io/cicd-272715/cicd:test', '.']
+    args: ['build', '-t', 'eu.gcr.io/cicd-272715/java', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push','eu.gcr.io/cicd-272715/cicd:test']
-images: ['eu.gcr.io/cicd-272715/cicd:test']
+    args: ['push','eu.gcr.io/cicd-272715/java']
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["app", "deploy"]
+images: ['eu.gcr.io/cicd-272715/java']
